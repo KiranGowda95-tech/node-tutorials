@@ -78,12 +78,26 @@
 //     console.log(err);
 //   });
 
-const EventEmiter = require("events");
+// const EventEmiter = require("events");
 
-const customEmitter = new EventEmiter();
+// const customEmitter = new EventEmiter();
 
-customEmitter.on("response", (name, id) => {
-  console.log(`data received to ${name} of id ${id}`);
-});
+// customEmitter.on("response", (name, id) => {
+//   console.log(`data received to ${name} of id ${id}`);
+// });
 
-customEmitter.emit("response", "kiran", 46);
+// customEmitter.emit("response", "kiran", 46);
+
+//streams-Http example
+
+var http = require("http");
+var fs = require("fs");
+
+http
+  .createServer(function (req, res) {
+    const text = fs.readFileSync("./content/first.txt", "utf8");
+    res.end(text);
+  })
+  .listen(5000, () => {
+    console.log("server is up on: 5000..");
+  });
