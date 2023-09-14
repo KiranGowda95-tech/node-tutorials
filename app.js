@@ -36,28 +36,28 @@
 
 // console.log("Hello People ");
 
-const { readFile, writeFile } = require("fs").promises;
+//const { readFile, writeFile } = require("fs").promises;
 // const util = require("util");
 
 // const readFilePromise = util.promisify(readFile);
 // const writeFilePromise = util.promisify(writeFile);
 
-const start = async () => {
-  try {
-    const first = await readFile("./content/first.txt", "utf8");
-    await writeFile(
-      "./content/newFile.txt",
-      `This is awesome: ${first}, from the first file`,
-      {
-        flag: "a",
-      }
-    );
-    console.log(first);
-  } catch (error) {
-    console.log(error);
-  }
-};
-start();
+// const start = async () => {
+//   try {
+//     const first = await readFile("./content/first.txt", "utf8");
+//     await writeFile(
+//       "./content/newFile.txt",
+//       `This is awesome: ${first}, from the first file`,
+//       {
+//         flag: "a",
+//       }
+//     );
+//     console.log(first);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+// start();
 // const getText = (path) => {
 //   return new ((resolve, reject) => {
 //     readFile(path, "utf8", (error, data) => {
@@ -77,3 +77,13 @@ start();
 //   .catch((err) => {
 //     console.log(err);
 //   });
+
+const EventEmiter = require("events");
+
+const customEmitter = new EventEmiter();
+
+customEmitter.on("response", () => {
+  console.log("data received");
+});
+
+customEmitter.emit("response");
