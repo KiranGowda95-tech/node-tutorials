@@ -82,8 +82,8 @@ const EventEmiter = require("events");
 
 const customEmitter = new EventEmiter();
 
-customEmitter.on("response", () => {
-  console.log("data received");
+customEmitter.on("response", (name, id) => {
+  console.log(`data received to ${name} of id ${id}`);
 });
 
-customEmitter.emit("response");
+customEmitter.emit("response", "kiran", 46);
