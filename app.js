@@ -90,14 +90,33 @@
 
 //streams-Http example
 
-var http = require("http");
-var fs = require("fs");
+// var http = require("http");
+// var fs = require("fs");
+// //console.log(fs.createReadStream());
+// http
+// .createServer(function (req, res) {
+//   // const text = fs.readFileSync("./content/first.txt", "utf8");
+//   // res.end(text);
+//   const fileStream = fs.createReadStream("./content/newFile.txt", "utf8");
+//   fileStream.on("open", () => {
+//     fileStream.pipe(res);
+//   });
+//   fileStream.on("err", (err) => {
+//     res.end(err);
+//   });
+// })
+// .listen(5000, () => {
+//   console.log("server is up on: 5000..");
+// });
 
-http
-  .createServer(function (req, res) {
-    const text = fs.readFileSync("./content/first.txt", "utf8");
-    res.end(text);
-  })
-  .listen(5000, () => {
-    console.log("server is up on: 5000..");
-  });
+const http = require("http");
+
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { "content-type": "text/htlm" });
+  res.write("<h1>Home page</h1>");
+  res.end();
+});
+
+server.listen(5000, () => {
+  console.log("server is up on :5000...");
+});
